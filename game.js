@@ -185,7 +185,7 @@ Characters.update = function () {
 	}
 
 	/**
-	 * Update Monkey movement/reaction from here.
+	 * Update monkey movement/reaction from here.
 	 * This conditions is just to animate the frames of the donkey
 	 */
 	if (this.donkeyThrowing) {
@@ -292,7 +292,7 @@ Mario.update = function () {
 			this.climbHeight = 0;
 		}
 	} else if (this.beating) {
-		// we will do something with the beating here.
+		// I will do something with the beating here.
 	} else if (this.jumpHeight > 0) {
 		if (this.jumpDirection > 0) {
 			// Mario is jumping up
@@ -322,9 +322,9 @@ Mario.update = function () {
 					this.offset = 0;
 				}
 				if (this.walkingState >= 17) this.walkingState = 0;
-				// we will check if mario fall to the right.
+				//  Check if mario fall to the right.
 				if (this.left / Floor.tileSize.w > 13) {
-					// we will check which tile mario is currently on. then we will return.
+					// Check which tile mario is currently on. then we will return.
 				}
 				if (this.left / Floor.tileSize.w > Floor.tile_x_count) {
 					// Mario is falling out of the Floor.
@@ -345,7 +345,7 @@ Mario.update = function () {
 					this.offset = 0;
 				}
 				if (this.walkingState >= 17) this.walkingState = 0;
-				// we will check if mario fall to the left. or collided with something.
+				// Check if mario fall to the left. or collided with something.
 			}
 		}
 	}
@@ -357,7 +357,7 @@ Mario.moveLeft = function () {
 		return;
 	}
 	if (!this.dead && !this.falling && !this.climbing && this.jumpHeight == 0) {
-		// this is waling toward the left.
+		// This is waling toward the left.
 		this.direction = -1;
 		this.walking = true;
 	}
@@ -420,7 +420,7 @@ Mario.canMoveRight = function () {
 };
 
 Mario.foundPauline = function () {
-	// let pauline be a;
+	// Let pauline be a;
 	let a = {
 		x: Characters.paulineLeft,
 		y: Characters.paulineFloor * Floor.tileSize.h,
@@ -474,11 +474,11 @@ Barrel.prototype.update = function () {
 	}
 	if (this.rollIntensity > 40) this.rollIntensity = 0;
 
-	// check the position of the barrel;
+	// Check the position of the barrel;
 	if (this.falling) {
 		this.fallIntensity += 1.2;
 		if (this.fallIntensity > Floor.tileSize.h * 4) {
-			// we will first check if the tile was the last one down.
+			//  Check if the tile was the last one down.
 			this.direction = this.direction * -1;
 			this.tile += 4;
 			this.fallIntensity = 0;
@@ -491,12 +491,12 @@ Barrel.prototype.update = function () {
 			this.left -= 1.2;
 		}
 	}
-	// the barrel is on the last floor down.
+	// The barrel is on the last floor down.
 	if (this.tile + 2 > 27) {
 		return;
 	}
 
-	// we want to check if the barrel is currently standing on a ladder.
+	// Check if the barrel is currently standing on a ladder.
 	let tile = TILES[this.tile + 2][Math.floor((this.left + Floor.tileSize.w) / Floor.tileSize.w) - 1];
 	if (this.direction > 0) {
 		// barrel is moving to the right.
@@ -513,7 +513,7 @@ Barrel.prototype.update = function () {
 			this.passedLadder = false;
 		}
 		if (!this.falling) {
-			// we check if it reached the end of the tile.
+			//Check if it reached the end of the tile.
 			let floorTile = TILES[this.tile + 1][Math.floor((this.left + Floor.tileSize.w) / Floor.tileSize.w) - 1];
 			if (floorTile == 'O') {
 				this.falling = true;
@@ -565,7 +565,7 @@ Barrel.prototype.hasCollision = function () {
 		barrelTop += this.fallIntensity;
 	}
 
-	// we have the current Mario left and top, same with the barrel.
+	// I have the current Mario left and top, same with the barrel.
 
 	// let mario be a;
 	let a = {
@@ -583,8 +583,8 @@ Barrel.prototype.hasCollision = function () {
 		h: 18,
 	};
 
-	// this condition check the left and top of each element. Same with bottom and right.
-	// returns true if all the conditions are meet meaning there was  a collision.
+	// This condition check the left and top of each element. Same with bottom and right.
+	// Returns true if all the conditions are meet meaning there was  a collision.
 	return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 };
 
@@ -610,7 +610,7 @@ let Game = {
 
 /**
  * This method is used to handle all the key pressed in the game.
- * We will switch between the keys we need to check if they were pressed.
+ * Switch between the keys we need to check if they were pressed.
  * @param {*} e keydown event.
  */
 Game.handleKeyDown = function (e) {
@@ -642,7 +642,7 @@ Game.handleKeyDown = function (e) {
 
 /**
  * This method is used to handle all the keyup event in the game.
- * We will switch between the keys we need to check if they were released.
+ * Switch between the keys we need to check if they were released.
  * @param {*} e keyup event.
  */
 Game.handleKeyUp = function (e) {
@@ -656,7 +656,7 @@ Game.handleKeyUp = function (e) {
 
 /**
  * This method is called to initialize game components that require initialization.
- * We also use it to clear the barrels array from the game.
+ * I also use it to clear the barrels array from the game.
  */
 Game.init = function () {
 	Canvas.initialize();
@@ -684,7 +684,7 @@ Game.start = function () {
 Game.mainLoop = function () {
 	Canvas.clear();
 
-	// this three states means the game should not be playing.
+	// These three states means the game should not be playing.
 	if (Game.state == 'failed' || Game.state == 'completed' || Game.state == 'play') {
 		if (Game.state == 'failed' || Game.state == 'completed') {
 			Canvas.drawText(Game.state.toUpperCase(), { x: 250, y: 200 }, Game.state == 'completed' ? '#00ff00' : '#FF0000');
@@ -748,5 +748,5 @@ Game.draw = function () {
 	Canvas.drawText('Score: ' + this.score, { x: 400, y: 20 }, '#00ff00', 20, 'start');
 };
 
-// we call the start method when the script is loaded.
+//  Calls the start method when the script is loaded.
 Game.start();
