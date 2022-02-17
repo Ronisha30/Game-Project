@@ -6,7 +6,7 @@
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame;
 
-var Canvas = {
+let Canvas = {
 	canvas: undefined,
 	ctx: undefined,
 };
@@ -98,7 +98,7 @@ const ladderImage = new Image();
 floorImage.src = './images/floor.png';
 ladderImage.src = './images/ladder.png';
 
-var Floor = {
+let Floor = {
 	floorWidth: 504,
 	tileSize: {
 		w: 18,
@@ -145,7 +145,7 @@ donkey.src = './images/donkey.png';
  * Define properties required by characters.
  */
 
-var Characters = {
+let Characters = {
 	fireIntensity: 0, // used to check which fire frame is to be drawn next.
 	fireOffset: 0, // store the current offset left image frame of the fire.
 	paulineIntensity: 0, // used to check which frame of pauline should be drawn.
@@ -240,7 +240,7 @@ marioLeft.src = './images/mario_left.png';
 const marioRight = new Image();
 marioRight.src = './images/mario_right.png';
 
-var Mario = {
+let Mario = {
 	dead: false,
 	falling: false,
 	climbing: false, //
@@ -599,10 +599,10 @@ Barrel.prototype.isFinished = function () {
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-var donkeyGrin = new Image();
+let donkeyGrin = new Image();
 donkeyGrin.src = './images/grin.png';
 
-var Game = {
+let Game = {
 	score: 0, // recording the game score.
 	barrels: [], // for storing all the barrels present in the game.
 	state: 'play', // keep track of the game state.
